@@ -1,6 +1,8 @@
 # Vectrex Logo Demo
 
-This project converts a simple SVG logo into line segments that are friendly to a Vectrex/PiTrex display, previews the result locally, and emits a C header you can compile into a PiTrex program.
+Turn a simple SVG logo into vector line data for a Vectrex or PiTrex display. The included tools create a desktop preview, a C header for PiTrex, and a native Vectrex ROM for compatible emulators.
+
+Created by [Craig Kohler](https://craigkohler.com).
 
 ## What is here
 
@@ -63,11 +65,7 @@ This demo source follows that pattern. To build it on your PiTrex setup, the sim
 2. Copy `src/logo_demo.c` and `generated/logo_segments.h` into a new or existing sample directory in that repo.
 3. Use the same Makefile style as the PiTrex `hello_world` examples and build with `make -f Makefile.raspbian`.
 
-Because this local machine does not currently have the PiTrex SDK installed, the code in this repo is verified here by:
-
-- testing the SVG converter
-- generating the C header
-- generating an SVG preview of the exact segments that the Vectrex program will draw
+You can validate the SVG conversion and preview pipeline on any machine with Python 3. A PiTrex SDK and hardware are needed only to compile and run the PiTrex C demo.
 
 ## Emulator note
 
@@ -75,14 +73,19 @@ Because this local machine does not currently have the PiTrex SDK installed, the
 
 This repo now also includes a native Vectrex ROM builder. It rescales the generated logo line data into 8-bit Vectrex coordinates and assembles a cartridge ROM at `build/actioncorp_logo.bin`.
 
-## Current testing status
+## Validation
 
-I can test the converter and preview pipeline here right now.
+The included test suite validates SVG conversion, native Vectrex coordinate bounds, and handling of disconnected objects:
 
-I cannot yet run the PiTrex C program in a Vectrex emulator on this machine because there is no local PiTrex toolchain or emulator installed. If you want, the next step can be either:
+```bash
+python3 -m unittest discover -s tests -p 'test_*.py'
+```
 
-- you drop your real logo SVG into `assets/logo.svg` and I wire it in here
-- or I help you install a PiTrex build environment and emulator so we can try to compile and run it too
+The host-independent tests do not compile the PiTrex C demo; that step requires the PiTrex SDK and a PiTrex-compatible setup. The generated SVG preview is useful for confirming the exact vector segments before moving to hardware.
+
+## Creator and implementation
+
+This project was created by [Craig Kohler](https://craigkohler.com). Its initial implementation was produced with Codex, then tested and refined for this repository.
 
 ## Sources
 
