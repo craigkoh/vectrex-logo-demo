@@ -1,6 +1,10 @@
 # Vectrex Logo Demo
 
-Turn a simple SVG logo into vector line data for a Vectrex or PiTrex display. The included tools create a desktop preview, a C header for PiTrex, and a native Vectrex ROM for compatible emulators.
+<p align="center">
+  <img src="docs/logo_preview.png" width="480" alt="Generated Vectrex logo preview">
+</p>
+
+Turn an SVG logo into vector line data for a Vectrex or PiTrex display. The tools create a desktop preview, a C header for PiTrex, and a native Vectrex ROM for compatible emulators.
 
 Created by [Craig Kohler](https://craigkohler.com).
 
@@ -83,9 +87,9 @@ python3 -m unittest discover -s tests -p 'test_*.py'
 
 The host-independent tests do not compile the PiTrex C demo; that step requires the PiTrex SDK and a PiTrex-compatible setup. The generated SVG preview is useful for confirming the exact vector segments before moving to hardware.
 
-## Creator and implementation
+## Creator
 
-This project was created by [Craig Kohler](https://craigkohler.com). Its initial implementation was produced with Codex, then tested and refined for this repository.
+Created by [Craig Kohler](https://craigkohler.com).
 
 ## Sources
 
